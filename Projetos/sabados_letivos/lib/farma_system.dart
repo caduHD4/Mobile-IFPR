@@ -1,13 +1,3 @@
-import 'package:sabados_letivos/farma_system.dart' as farma_system;
-import 'dart:io';
-
-void main(List<String> arguments) {
-  // Exemplo de chamada da função:
-  //cadastrarProduto("Dipirona", 100, 5.99);
-
-}
-
-
 
 
 //Duas funções sem retorno e sem parâmetro:
@@ -46,3 +36,31 @@ void cadastrarProduto(String nome, int qtd, double preco) {
 }
 
 
+
+
+// Função para registrar uma venda
+void registrarVenda(String nome, int qtd) {
+  int quantidadeVendida;
+  double valorTotal;
+
+  // Verificar se o produto está disponível em estoque
+  if (qtd > quantidadeEmEstoque) {
+    print("Quantidade insuficiente em estoque.");
+    return; // Encerrar a execução da função
+  }
+
+  // Atualizar a quantidade em estoque
+  quantidadeEmEstoque -= qtd;
+
+  // Calcular o valor total da venda
+  valorTotal = qtd * precoUnitario;
+
+  // Exibir mensagem de confirmação da venda
+  print("Venda registrada com sucesso:");
+  print("Nome: $nome");
+  print("Quantidade vendida: $qtd");
+  print("Valor total: R\$ $valorTotal");
+}
+
+// Exemplo de chamada da função
+registrarVenda("Dipirona", 50);
