@@ -3,23 +3,22 @@ import 'dart:io';
 
 void main(List<String> arguments) {
   print("sintaxe");
-
+  print(verificarAprovacao4());
 }
 
 //função com retorno e com parâmetro
-String verificarAprovacao5(double nota1, double nota2){
+String verificarAprovacao5(double nota1, double nota2) {
   var media = (nota1 + nota2 / 2);
-  if (media >= 6){
+  if (media >= 6) {
     return 'aprovado';
-  }else{
+  } else {
     return 'reprovado';
   }
   //return (media > 6) ? 'aprovado : 'reprovado';
 }
 
 //função sem retorno e sem parâmetro
-void verificarAprovacao2(){
-
+void verificarAprovacao2() {
   double nota1, nota2, media;
 
   print('informa nota1: ');
@@ -38,18 +37,16 @@ void verificarAprovacao2(){
   }
 */
 
-print( (media >= 6) ? 'aprovado' : 'reprovado');
-
+  print((media >= 6) ? 'aprovado' : 'reprovado');
 }
 
 //função sem retorno com parâmetro
-void verificarAprovacao3(double nota1, double nota2){
+void verificarAprovacao3(double nota1, double nota2) {
   double media = (nota1 + nota2) / 2;
   print((media >= 6) ? 'aprovado' : 'reprovado');
 }
 
-verificarAprovacao4(){
-
+verificarAprovacao4() {
   double nota1, nota2, media;
 
   print('informa nota1: ');
@@ -60,11 +57,11 @@ verificarAprovacao4(){
 
   media = (nota1 + nota2) / 2;
 
-  if (media >= 6){
-      return 'aprovado';
-    }else{
-      return 'reprovado';
-    }
+  if (media >= 6) {
+    return 'aprovado';
+  } else {
+    return 'reprovado';
+  }
 }
 /*
 -> função sem retorno e sem parâmetro
