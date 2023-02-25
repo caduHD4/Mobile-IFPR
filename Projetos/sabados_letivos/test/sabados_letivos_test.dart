@@ -1,4 +1,4 @@
-import 'package:desconto_salario/desconto_salario.dart';
+import 'package:sabados_letivos/sabados_letivos.dart';
 import 'package:test/test.dart';
 
 void main() {
