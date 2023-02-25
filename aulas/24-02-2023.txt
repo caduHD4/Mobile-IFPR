@@ -1,4 +1,25 @@
-https://dontpad.com/ddmifpr
+Na aula de hoje fizemos as seguintes atividades.
+
+Atividade 1
+ Criar variáveis de diversos tipos
+
+
+Atividade 2
+  Criar escopo do projeto para realizar como diário
+
+
+Atividade 3
+  Ao invés de atribuir valores, solicite os dados para o usuário
+
+
+  função sem retorno e com parâmetro
+  função sem retorno e sem parâmetro
+  função com retorno e sem parâmetro
+  função com retorno e com parâmetro
+
+
+
+Sabado letivo:
 
 Exercício I
 Para cada variante de função que estudamos elaborar a seguinte função:
