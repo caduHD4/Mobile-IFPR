@@ -11,7 +11,6 @@ void main(List<String> arguments) {
 String para int -> int.parse
 String para double -> double.parse
 int para string -> variavel.toString()
-
 */
   
 }
