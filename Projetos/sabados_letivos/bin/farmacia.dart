@@ -25,14 +25,14 @@ void main(List<String> arguments) {
 
   /*String nomeProduto = "Paracetamol";
 int quantidade = -10;
-atualizarEstoque(nomeProduto, quantidade);
+farma_system.atualizarEstoque(nomeProduto, quantidade);
 print("Estoque atual do produto $nomeProduto: ${produtos[nomeProduto]}");
 */
 
 /* double valorProduto = 50.0;
 double desconto = 10.0;
 double acrescimo = 5.0;
-double total = calcularTotal(valorProduto, desconto: desconto, acrescimo: acrescimo);
+double total = farma_system.calcularTotal(valorProduto, desconto: desconto, acrescimo: acrescimo);
 print("Valor total da venda: R\$ $total");
 */
 

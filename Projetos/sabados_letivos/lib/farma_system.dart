@@ -129,6 +129,17 @@ bool verificarProdutoEmEstoque(String nomeProduto) {
 }
 
 
+double obterPrecoUnitario(String nomeProduto, List<Map<String, dynamic>> estoque) {
+  // percorre o estoque em busca do produto com o nome informado
+  for (var produto in estoque) {
+    if (produto['nome'] == nomeProduto) {
+      return produto['preco'];
+    }
+  }
+  // caso não encontre o produto, retorna 0
+  return 0;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
