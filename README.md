@@ -1,16 +1,16 @@
-## Mobile-IFPR
+# Mobile-IFPR
 
 
-# Descrição
+## Descrição
 
 Anotações e arquivos da matéria de **dispositivos mobile** 
 
-# Dev
+## Dev
 
 ```Carlos Eduardo Mariano Garcia Pereira```  <a style="color:green">  **Desenvolvedor** </a>  
 
 
-# Tecnologias que serão utilizadas
+## Tecnologias que serão utilizadas
 
 * Flutter 📱
 
