@@ -11,11 +11,9 @@ void exibirMensagemDeEncerramento() {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
 //Duas funções sem retorno e com parâmetro:
 // Função para cadastrar um novo produto no estoque
 void cadastrarProduto(String nome, int qtd, double preco) {
-
   String nomeProduto;
   int quantidade;
   double precoUnitario;
@@ -30,9 +28,6 @@ void cadastrarProduto(String nome, int qtd, double preco) {
   print("Quantidade: $quantidade");
   print("Preço unitário: R\$ $precoUnitario");
 }
-
-
-
 
 // Função para registrar uma venda
 String nomeProduto = "Dipirona";
@@ -64,9 +59,6 @@ void registrarVenda(String nome, int qtd) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
 //Duas funções com retorno e sem parâmetro:
 Map<String, int> produtos = {
   "Dipirona": 0,
@@ -88,12 +80,6 @@ void verificarEstoqueTotal() {
   print("Estoque total da farmácia: $total unidades");
 }
 
-
-
-
-
-
-
 // Dados das vendas realizadas
 List<double> vendas = [150.0, 120.5, 80.25, 50.75];
 
@@ -112,7 +98,6 @@ double obterReceitaTotal() {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
 //Duas funções com retorno e com parâmetro:
 // Função para verificar se um produto está em estoque
 bool verificarProdutoEmEstoque(String nomeProduto) {
@@ -128,8 +113,8 @@ bool verificarProdutoEmEstoque(String nomeProduto) {
   return false;
 }
 
-
-double obterPrecoUnitario(String nomeProduto, List<Map<String, dynamic>> estoque) {
+double obterPrecoUnitario(
+    String nomeProduto, List<Map<String, dynamic>> estoque) {
   // percorre o estoque em busca do produto com o nome informado
   for (var produto in estoque) {
     if (produto['nome'] == nomeProduto) {
@@ -140,28 +125,29 @@ double obterPrecoUnitario(String nomeProduto, List<Map<String, dynamic>> estoque
   return 0;
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
 
-/*
 //Duas funções com parâmetros opcionais (com o devido contexto):
 // Função para atualizar o estoque de um produto
-void atualizarEstoque(String nomeProduto, int quantidade) {
-  // Verificar se o produto existe no cadastro
-  if (produtos.containsKey(nomeProduto)) {
-    // Atualizar o estoque do produto com a quantidade informada
-    produtos[nomeProduto] += quantidade;
-
-    // Verificar se o estoque ficou negativo
-    if (produtos[nomeProduto]! < 0) {
-      produtos[nomeProduto] = 0;
-    }
+double? calcularPrecoTotal({required String produto, int quantidade = 1, double? desconto}) {
+  double? precoUnitario = produtos[produto] as double?;
+  if (precoUnitario == null) {
+    print('Produto não encontrado no estoque.');
+    return null;
   }
+  
+  double precoTotal = precoUnitario * quantidade;
+  if (desconto != null) {
+    precoTotal -= desconto;
+  }
+  
+  return precoTotal;
 }
-*/
+
 
 // Função para calcular o valor total de uma venda
-double calcularTotal(double valorProduto, {double desconto = 0, double acrescimo = 0}) {
+double calcularTotal(double valorProduto,
+    {double desconto = 0, double acrescimo = 0}) {
   double valorTotal = valorProduto;
 
   // Verificar se há desconto e/ou acréscimo
@@ -176,8 +162,25 @@ double calcularTotal(double valorProduto, {double desconto = 0, double acrescimo
   return valorTotal;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+///Duas funções com parâmetros nomeados
+// Função para cadastrar um novo produto no estoque
 
+void cadastrarProduto2({required String nome, required double preco, int quantidade = 0, String fabricante = ""}) {
+  print("Produto cadastrado:");
+  print("Nome: $nome");
+  print("Preço: R\$ $preco");
+  print("Quantidade: $quantidade");
+  print("Fabricante: $fabricante");
+}
 
+// Função para registrar uma venda
+void registrarVenda2({required String nomeProduto, int quantidade = 1, String nomeCliente = ""}) {
+  print("Venda registrada:");
+  print("Produto: $nomeProduto");
+  print("Quantidade: $quantidade");
+  print("Cliente: $nomeCliente");
+}
 
 
 

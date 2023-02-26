@@ -12,7 +12,6 @@ void main(List<String> arguments) {
   //double receitaTotal = farma_system.obterReceitaTotal();
   //print("Receita total da farmácia: R\$ ${receitaTotal.toStringAsFixed(2)}");
 
-
   /*String nomeProduto = "Dipirona";
   bool emEstoque = farma_system.verificarProdutoEmEstoque(nomeProduto);
   if (emEstoque) {
@@ -21,7 +20,7 @@ void main(List<String> arguments) {
     print("O produto $nomeProduto não está em estoque");
   }*/
 
-
+  //farma_system.obterPrecoUnitario("Dipirona", );
 
   /*String nomeProduto = "Paracetamol";
 int quantidade = -10;
@@ -36,5 +35,6 @@ double total = farma_system.calcularTotal(valorProduto, desconto: desconto, acre
 print("Valor total da venda: R\$ $total");
 */
 
-
+//farma_system.cadastrarProduto2(nome: "Paracetamol", preco: 5.0, quantidade: 100, fabricante: "EMS");
+//farma_system.registrarVenda2(nomeProduto: "Paracetamol", quantidade: 2, nomeCliente: "João da Silva");
 }
