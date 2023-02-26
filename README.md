@@ -19,3 +19,11 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 * Dart 🌊
 
 > Linguagem utilizada em conjunto com o Framework Flutter
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
