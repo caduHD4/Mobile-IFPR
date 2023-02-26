@@ -7,8 +7,7 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 
 ## Desemvolvedor
 
-```diff
-+ Carlos Eduardo Mariano Garcia Pereira **Dev** ```
+<code style="color : green">Carlos Eduardo Mariano Garcia Pereira</code>
 
 ## Tecnologias utilizadas
 
