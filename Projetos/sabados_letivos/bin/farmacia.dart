@@ -3,46 +3,38 @@ import 'dart:io';
 
 void main(List<String> arguments) {
   // Exemplo de chamada da função:
-  //cadastrarProduto("Dipirona", 100, 5.99);
+  //farma_system.exibirMensagemDeBoasVindas();
+  //farma_system.exibirMensagemDeEncerramento();
+  //farma_system.cadastrarProduto("Dipirona", 100, 5.99);
+  //farma_system.registrarVenda("Dipirona", 50);
+  //farma_system.verificarEstoqueTotal();
+
+  //double receitaTotal = farma_system.obterReceitaTotal();
+  //print("Receita total da farmácia: R\$ ${receitaTotal.toStringAsFixed(2)}");
+
+
+  /*String nomeProduto = "Dipirona";
+  bool emEstoque = farma_system.verificarProdutoEmEstoque(nomeProduto);
+  if (emEstoque) {
+    print("O produto $nomeProduto está em estoque");
+  } else {
+    print("O produto $nomeProduto não está em estoque");
+  }*/
+
+
+
+  /*String nomeProduto = "Paracetamol";
+int quantidade = -10;
+atualizarEstoque(nomeProduto, quantidade);
+print("Estoque atual do produto $nomeProduto: ${produtos[nomeProduto]}");
+*/
+
+/* double valorProduto = 50.0;
+double desconto = 10.0;
+double acrescimo = 5.0;
+double total = calcularTotal(valorProduto, desconto: desconto, acrescimo: acrescimo);
+print("Valor total da venda: R\$ $total");
+*/
+
 
 }
-
-
-
-
-//Duas funções sem retorno e sem parâmetro:
-
-// Função para exibir mensagem de boas-vindas
-void exibirMensagemDeBoasVindas() {
-  print("Bem-vindo(a) ao sistema Farma System!");
-}
-
-// Função para exibir mensagem de encerramento
-void exibirMensagemDeEncerramento() {
-  print("Obrigado por utilizar o sistema da Farma System. Até!");
-}
-
-
-
-
-//Duas funções sem retorno e com parâmetro:
-
-// Função para cadastrar um novo produto no estoque
-void cadastrarProduto(String nome, int qtd, double preco) {
-
-  String nomeProduto;
-  int quantidade;
-  double precoUnitario;
-
-  nomeProduto = nome;
-  quantidade = qtd;
-  precoUnitario = preco;
-
-  // Exibir mensagem de confirmação do cadastro
-  print("Produto cadastrado com sucesso:");
-  print("Nome: $nomeProduto");
-  print("Quantidade: $quantidade");
-  print("Preço unitário: R\$ $precoUnitario");
-}
-
-

@@ -1,7 +1,4 @@
-
-
 //Duas funções sem retorno e sem parâmetro:
-
 // Função para exibir mensagem de boas-vindas
 void exibirMensagemDeBoasVindas() {
   print("Bem-vindo(a) ao sistema Farma System!");
@@ -12,11 +9,10 @@ void exibirMensagemDeEncerramento() {
   print("Obrigado por utilizar o sistema da Farma System. Até!");
 }
 
-
+////////////////////////////////////////////////////////////////////////////////
 
 
 //Duas funções sem retorno e com parâmetro:
-
 // Função para cadastrar um novo produto no estoque
 void cadastrarProduto(String nome, int qtd, double preco) {
 
@@ -39,6 +35,10 @@ void cadastrarProduto(String nome, int qtd, double preco) {
 
 
 // Função para registrar uma venda
+String nomeProduto = "Dipirona";
+int quantidadeEmEstoque = 100;
+double precoUnitario = 5.99;
+
 void registrarVenda(String nome, int qtd) {
   int quantidadeVendida;
   double valorTotal;
@@ -62,5 +62,111 @@ void registrarVenda(String nome, int qtd) {
   print("Valor total: R\$ $valorTotal");
 }
 
-// Exemplo de chamada da função
-registrarVenda("Dipirona", 50);
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//Duas funções com retorno e sem parâmetro:
+Map<String, int> produtos = {
+  "Dipirona": 0,
+  "Paracetamol": 50,
+  "Omeprazol": 75,
+  "Amoxicilina": 40
+};
+
+// Função para verificar o estoque total da farmácia
+void verificarEstoqueTotal() {
+  int total = 0;
+
+  // Percorrer o cadastro de produtos e somar as quantidades em estoque
+  for (var produto in produtos.entries) {
+    total += produto.value;
+  }
+
+  // Exibir a quantidade total em estoque
+  print("Estoque total da farmácia: $total unidades");
+}
+
+
+
+
+
+
+
+// Dados das vendas realizadas
+List<double> vendas = [150.0, 120.5, 80.25, 50.75];
+
+// Função para obter a receita total da farmácia
+double obterReceitaTotal() {
+  double total = 0;
+
+  // Percorrer a lista de vendas e somar os valores
+  for (var venda in vendas) {
+    total += venda;
+  }
+
+  // Retornar o valor total das vendas
+  return total;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+//Duas funções com retorno e com parâmetro:
+// Função para verificar se um produto está em estoque
+bool verificarProdutoEmEstoque(String nomeProduto) {
+  // Verificar se o produto existe no cadastro
+  if (produtos.containsKey(nomeProduto)) {
+    // Verificar se há pelo menos uma unidade do produto em estoque
+    if (produtos[nomeProduto]! > 0) {
+      return true;
+    }
+  }
+
+  // Caso o produto não exista no cadastro ou não tenha estoque, retornar falso
+  return false;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+//Duas funções com parâmetros opcionais (com o devido contexto):
+// Função para atualizar o estoque de um produto
+void atualizarEstoque(String nomeProduto, int quantidade) {
+  // Verificar se o produto existe no cadastro
+  if (produtos.containsKey(nomeProduto)) {
+    // Atualizar o estoque do produto com a quantidade informada
+    produtos[nomeProduto] += quantidade;
+
+    // Verificar se o estoque ficou negativo
+    if (produtos[nomeProduto]! < 0) {
+      produtos[nomeProduto] = 0;
+    }
+  }
+}
+*/
+
+// Função para calcular o valor total de uma venda
+double calcularTotal(double valorProduto, {double desconto = 0, double acrescimo = 0}) {
+  double valorTotal = valorProduto;
+
+  // Verificar se há desconto e/ou acréscimo
+  if (desconto > 0) {
+    valorTotal -= (valorProduto * desconto) / 100;
+  }
+
+  if (acrescimo > 0) {
+    valorTotal += (valorProduto * acrescimo) / 100;
+  }
+
+  return valorTotal;
+}
+
+
+
+
+
+
