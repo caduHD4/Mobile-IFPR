@@ -7,8 +7,7 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 
 ## Desemvolvedor
 
-```Carlos Eduardo Mariano Garcia Pereira```  <a style="color:green">  **Dev** </a>  
-
+```diff + Carlos Eduardo Mariano Garcia Pereira **Dev** ```
 
 ## Tecnologias utilizadas
 
@@ -21,9 +20,4 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 > Linguagem utilizada em conjunto com o Framework Flutter
 
 
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
 
