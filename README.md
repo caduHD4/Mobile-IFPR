@@ -20,7 +20,3 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 > Linguagem utilizada em conjunto com o Framework Flutter
 
 
-
-```diff
-+ teste
-```
