@@ -10,7 +10,7 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 ```Carlos Eduardo Mariano Garcia Pereira```  <a style="color:green">  **Desenvolvedor** </a>  
 
 
-## Tecnologias que serão utilizadas
+## Tecnologias utilizadas
 
 * Flutter 📱
 
