@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String primeiroValor = "0";
+  double? resultado;
 
 
 
@@ -34,7 +35,17 @@ class _HomeState extends State<Home> {
                 });
                   },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
-              FilledButton(child: Icon(Icons.backspace), onPressed: () {},
+              FilledButton(child: Icon(Icons.backspace),
+                  onPressed: () {
+                setState(() {
+                  primeiroValor = primeiroValor.substring(0, primeiroValor.length - 1);
+                  if(primeiroValor.length == 0){
+                    primeiroValor = "0";
+                  }
+
+                });
+
+                  },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
               FilledButton(child: Text("%",style: TextStyle (fontSize: 25),),  onPressed: () {},
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
@@ -122,7 +133,15 @@ class _HomeState extends State<Home> {
                     });
                   },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
-              FilledButton(child: Text("-",style: TextStyle (fontSize: 25),),  onPressed: () {},
+              FilledButton(child: Text("-",style: TextStyle (fontSize: 25),),
+                  onPressed: () {
+                  setState(() {
+                    if(validaUltimoOperador() != true) {
+                      primeiroValor = primeiroValor.substring(0, primeiroValor.length - 1);
+                    }
+                    primeiroValor += "-";
+                });}
+                  ,
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
             ],
           ),
@@ -165,7 +184,15 @@ class _HomeState extends State<Home> {
                   },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
               FilledButton(child: Text("+",style: TextStyle (fontSize: 25),),
-                  onPressed: () {},
+                  onPressed: () {
+                setState(() {
+                  if(validaUltimoOperador() != true) {
+                    primeiroValor = primeiroValor.substring(0, primeiroValor.length - 1);
+                  }
+                  primeiroValor += "+";
+
+                });
+                  },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
             ],
           ),
@@ -185,9 +212,28 @@ class _HomeState extends State<Home> {
                     });
                   },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
-              FilledButton(child: Text(",",style: TextStyle (fontSize: 25),),  onPressed: () {},
+              FilledButton(child: Text(",",style: TextStyle (fontSize: 25),),
+                  onPressed: () {
+                setState(() {
+                  if(!primeiroValor.contains(",")){
+                    primeiroValor += ",";
+                  }
+
+                });
+
+                  },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
-              FilledButton(child: Text("=",style: TextStyle (fontSize: 25),),  onPressed: () {},
+              FilledButton(child: Text("=",style: TextStyle (fontSize: 25),),
+                  onPressed: () {
+                setState(() {
+                  List<String> aux = primeiroValor.split(RegExp("[+]|[-]|[x]|[/]"));
+                  double operacao = 0;
+                  aux.forEach((element){
+                    operacao += double.parse(element.replaceAll(",", "."));
+                  });
+                  primeiroValor = operacao.toString().replaceAll(".", ",");
+                });
+                  },
                   style: ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(70, 70)))),
             ],
           ),
@@ -198,4 +244,17 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+    bool validaUltimoOperador() {
+    if(primeiroValor.substring(primeiroValor.length - 1) != "+"
+    && primeiroValor.substring(primeiroValor.length - 1) != "-"
+    && primeiroValor.substring(primeiroValor.length - 1) != "x"
+    && primeiroValor.substring(primeiroValor.length - 1) != "/"
+    && primeiroValor.substring(primeiroValor.length - 1) != "%") {
+    return true;
+    }
+
+    return false;
+    }
 }
+
+
