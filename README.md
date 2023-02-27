@@ -1,15 +1,15 @@
-# Mobile-IFPR
+# 🔷Mobile-IFPR🔷
 
 
-## Descrição
+## 📃Descrição📌
 
 Anotações e arquivos da matéria de **dispositivos mobile** 
 
-## Desemvolvedor
+## 💻Desemvolvedor💻
 
 <code style="color : green">Carlos Eduardo Mariano Garcia Pereira</code>
 
-## Tecnologias utilizadas
+## 🔎Tecnologias utilizadas🔎
 
 * Flutter 📱
 
