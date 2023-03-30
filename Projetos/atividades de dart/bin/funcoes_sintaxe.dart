@@ -17,6 +17,10 @@ String verificarAprovacao5(double nota1, double nota2) {
   //return (media > 6) ? 'aprovado : 'reprovado';
 }
 
+
+
+
+
 //função sem retorno e sem parâmetro
 void verificarAprovacao2() {
   double nota1, nota2, media;
@@ -28,6 +32,9 @@ void verificarAprovacao2() {
   nota2 = double.parse(stdin.readLineSync()!);
 
   media = (nota1 + nota2) / 2;
+
+
+
 
 /*
   if (media >= 6){
