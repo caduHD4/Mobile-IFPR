@@ -6,10 +6,14 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Primeira tela'),
-      ),
+    return Container( //pai
+      color: Colors.yellow,
+      child: Container( //filho
+        color: Colors.green,
+        child: Container( //neto
+          color: Colors.red,
+        )
+      )
     );
   }
 }
