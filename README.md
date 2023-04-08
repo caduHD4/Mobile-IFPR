@@ -5,7 +5,7 @@
 
 Anotações e arquivos da matéria de **dispositivos mobile** 
 
-### 💻Desemvolvedor💻
+### 💻Desenvolvedor💻
 
 <code style="color : green">Carlos Eduardo Mariano Garcia Pereira</code>
 
