@@ -13,9 +13,13 @@ class Introducao extends StatelessWidget {
       body: ElevatedButton(
         child: const Text('Iniciar'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Login());
+          Route rota = MaterialPageRoute(builder: (context) => Cadastro());
           //Navigator.of(context).push(rota);
           Navigator.pushNamed(context, 'login');
+          Route rota2 = MaterialPageRoute(builder: (context) => Login());
+          //Navigator.of(context).push(rota);
+          Navigator.pushNamed(context, 'login');
+          
         },
       ),
     );

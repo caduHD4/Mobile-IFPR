@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/paginas/Cadastro.dart';
-import 'package:projeto_final/paginas/Detalhes.dart';
+import 'package:projeto_final/paginas/Compra.dart';
 import 'package:projeto_final/paginas/Home.dart';
 import 'package:projeto_final/paginas/Introducao.dart';
-import 'package:projeto_final/paginas/Lista.dart';
+import 'package:projeto_final/paginas/Produto.dart';
 import 'package:projeto_final/paginas/Login.dart';
+import 'package:projeto_final/paginas/Catalogo.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -18,12 +19,16 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/' : (context) => Introducao(),
-        'login' : (context) => Login(),
-        'home': (context) => Home(),
+        '/': (context) => Introducao(),
         'cadastro': (context) => Cadastro(),
-        'lista': (context) => Lista(),
-        'detalhes': (context) => Detalhes(),
+        'login': (context) => Login(),
+        'home': (context) => Home(),
+        //'config': (context) => Configuracoes(),
+        //'perfil': (context) => Perfil(),
+        //'sobre': (context) => Sobre(),
+        'catalogo': (context) => Catalogo(),
+        'compra': (context) => Compra(),
+        //'compra_feita': (context) => Compra_feita(),
       }
     );
   }

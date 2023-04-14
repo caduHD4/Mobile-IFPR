@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/paginas/Cadastro.dart';
 import 'package:projeto_final/paginas/Home.dart';
-import 'package:projeto_final/paginas/Lista.dart';
+import 'package:projeto_final/paginas/Compra.dart';
 
 class Cadastro extends StatelessWidget {
   const Cadastro({super.key});
@@ -11,9 +11,9 @@ class Cadastro extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Cadastro')),
       body: ElevatedButton(
-        child: const Text('Lista'),
+        child: const Text('Compra'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Lista());
+          Route rota = MaterialPageRoute(builder: (context) => Compra());
           //Navigator.of(context).push(rota);
           Navigator.push(context, rota);
         },

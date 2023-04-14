@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/paginas/Cadastro.dart';
-import 'package:projeto_final/paginas/Detalhes.dart';
+import 'package:projeto_final/paginas/Compra.dart';
 import 'package:projeto_final/paginas/Home.dart';
-import 'package:projeto_final/paginas/Lista.dart';
+import 'package:projeto_final/paginas/Produto.dart';
 
-class Lista extends StatelessWidget {
-  const Lista({super.key});
+class Produto extends StatelessWidget {
+  const Produto({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Lista')),
+      appBar: AppBar(title: const Text('Produto')),
       body: ElevatedButton(
-        child: const Text('Detalhes'),
+        child: const Text('Compra'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Detalhes());
+          Route rota = MaterialPageRoute(builder: (context) => Compra());
           //Navigator.of(context).push(rota);
           Navigator.push(context, rota);
         },
