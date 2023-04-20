@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/paginas/Cadastro.dart';
-import 'package:projeto_final/paginas/Home.dart';
-import 'package:projeto_final/paginas/Login.dart';
+import 'package:projeto_final/paginas/Acesso.dart';
 
 class Introducao extends StatelessWidget {
   const Introducao({super.key});
@@ -13,13 +11,7 @@ class Introducao extends StatelessWidget {
       body: ElevatedButton(
         child: const Text('Iniciar'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Cadastro());
-          //Navigator.of(context).push(rota);
-          Navigator.pushNamed(context, 'login');
-          Route rota2 = MaterialPageRoute(builder: (context) => Login());
-          //Navigator.of(context).push(rota);
-          Navigator.pushNamed(context, 'login');
-          
+          Navigator.pushNamed(context, 'acesso');
         },
       ),
     );

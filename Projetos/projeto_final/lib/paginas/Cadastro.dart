@@ -11,9 +11,9 @@ class Cadastro extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Cadastro')),
       body: ElevatedButton(
-        child: const Text('Compra'),
+        child: const Text('Home'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Compra());
+          Route rota = MaterialPageRoute(builder: (context) => Home());
           //Navigator.of(context).push(rota);
           Navigator.push(context, rota);
         },
