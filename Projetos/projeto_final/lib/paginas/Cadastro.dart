@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/paginas/constants.dart';
+import 'package:projeto_final/constants.dart';
 
 class Cadastro extends StatelessWidget {
   const Cadastro({Key? key});
@@ -12,7 +12,7 @@ class Cadastro extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 22),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 50),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -23,13 +23,13 @@ class Cadastro extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, 'login');
-                          },
-                          child: Text(
-                            "LOGIN",
-                            style: Theme.of(context).textTheme.button,
-                          ),
+                        onTap: () {
+                          Navigator.pushNamed(context, 'login');
+                        },
+                        child: Text(
+                          "LOGIN",
+                          style: Theme.of(context).textTheme.button,
+                        ),
                       ),
                     ],
                   ),
@@ -46,7 +46,7 @@ class Cadastro extends StatelessWidget {
                             color: kPrimaryColor,
                           ),
                         ),
-                        Expanded(
+                        Flexible(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "Usuário",
@@ -69,7 +69,7 @@ class Cadastro extends StatelessWidget {
                             color: kPrimaryColor,
                           ),
                         ),
-                        Expanded(
+                        Flexible(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "Digite seu e-mail",
@@ -79,8 +79,6 @@ class Cadastro extends StatelessWidget {
                       ],
                     ),
                   ),
-
-
 
                   Padding(
                     padding: const EdgeInsets.only(bottom: 40),
@@ -94,7 +92,7 @@ class Cadastro extends StatelessWidget {
                             color: kPrimaryColor,
                           ),
                         ),
-                        Expanded(
+                        Flexible(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "Crie sua senha",
@@ -103,7 +101,7 @@ class Cadastro extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),  
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -114,7 +112,7 @@ class Cadastro extends StatelessWidget {
                           color: kPrimaryColor,
                         ),
                       ),
-                      Expanded(
+                      Flexible(
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: "Repita sua senha",
@@ -133,7 +131,7 @@ class Cadastro extends StatelessWidget {
                         Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, 'home');
+                            Navigator.pushReplacementNamed(context, 'home');
                           },
                           child: Container(
                             padding: EdgeInsets.all(16),
@@ -159,5 +157,3 @@ class Cadastro extends StatelessWidget {
     );
   }
 }
-
-     

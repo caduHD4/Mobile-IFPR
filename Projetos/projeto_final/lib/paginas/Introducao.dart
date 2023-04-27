@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/paginas/Login.dart';
-import 'package:projeto_final/paginas/constants.dart';
+import 'package:projeto_final/constants.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class Introducao extends StatelessWidget {
   const Introducao({super.key});
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class Introducao extends StatelessWidget {
                         margin: EdgeInsets.only(bottom: 120),
                         padding:
                             EdgeInsets.symmetric(horizontal: 36, vertical: 16),
-                        width: 200,
+                        width: 201,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: kPrimaryColor,

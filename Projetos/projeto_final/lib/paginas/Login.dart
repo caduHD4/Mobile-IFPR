@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/paginas/constants.dart';
+import 'package:projeto_final/constants.dart';
+import 'package:projeto_final/paginas/Home.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key});
@@ -12,7 +13,7 @@ class Login extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 22),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 50),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -84,7 +85,12 @@ class Login extends StatelessWidget {
                         Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, 'home');
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home()),
+                              (route) => false,
+                            );
+
                           },
                           child: Container(
                             padding: EdgeInsets.all(16),

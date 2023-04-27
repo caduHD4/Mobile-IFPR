@@ -9,7 +9,7 @@ import 'package:projeto_final/paginas/Catalogo.dart';
 import 'package:projeto_final/paginas/Configu.dart';
 import 'package:projeto_final/paginas/Perfil.dart';
 import 'package:projeto_final/paginas/Sobre.dart';
-import 'package:projeto_final/paginas/constants.dart';
+import 'package:projeto_final/constants.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -17,7 +17,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The best app of the world',
+      title: 'Farma System',
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: kPrimaryColor,
