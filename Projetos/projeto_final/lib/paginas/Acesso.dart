@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/paginas/Cadastro.dart';
-import 'package:projeto_final/paginas/Home.dart';
 
 class Acesso extends StatelessWidget {
   const Acesso({Key? key}) : super(key: key);
