@@ -15,16 +15,14 @@ class ContatoDAO implements ContatoDaoInterface{
         nome: 'cleber garcia',
         email: 'cleber@gmail.com',
         telefone: '(44) 96744-8569',
-        URLAvatar:
-            'https://cdn.pixabay.com/photo/2016/08/21/16/31/emoticon-1610228_1280.png'),
+        URLAvatar:'https://cdn.pixabay.com/photo/2016/08/21/16/31/emoticon-1610228_1280.png'),
 
     Contato.dados(
         id: 3,
         nome: 'Pedrim Lima',
         email: 'pedro@gmail.com',
         telefone: '(44) 96434-5749',
-        URLAvatar:
-            'https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430_1280.png'),
+        URLAvatar:'https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430_1280.png'),
 
   ];
 

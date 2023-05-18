@@ -33,7 +33,9 @@ class Formulario2 extends StatelessWidget {
             TextFormField(
               keyboardType: TextInputType.text,
               maxLength: 10,
-              inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'[x-yX-Y]'))],
+              inputFormatters: [
+                FilteringTextInputFormatter.deny(RegExp(r'[x-yX-Y]'))
+              ],
               controller: editorCodigo,
               decoration: InputDecoration(
                   label: Text('Codigo:'), hintText: 'Informe o codigo.'),
@@ -76,9 +78,7 @@ class Formulario2 extends StatelessWidget {
             ElevatedButton(
               child: Text('ok'),
               onPressed: () {
-                if (keyForm.currentState!.validate()) {
-                 
-                }
+                if (keyForm.currentState!.validate()) {}
               },
             )
           ],

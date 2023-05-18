@@ -4,12 +4,11 @@ import 'package:flutter_application_8/view/database/fake/contatao_dao.dart';
 import 'package:flutter_application_8/view/dto/contato.dart';
 import 'package:flutter_application_8/view/interface/contato_dao_interface.dart';
 
+
 class ContatoLista extends StatelessWidget {
-  ContatoDaoInterface dao;
 
   @override
   Widget build(BuildContext context) {
-    dao.buscarTodos();
     return Scaffold(
       appBar: AppBar(title: const Text('Lista Contatos')),
       body: criarLista(),
@@ -22,7 +21,7 @@ class ContatoLista extends StatelessWidget {
     Widget criarLista() {
     ContatoDaoInterface dao = ContatoDAO();
     return FutureBuilder(
-      future:dao.buscarTodos(),
+      future: dao.buscarTodos(),
       builder: (BuildContext context, AsyncSnapshot<List<Contato>> lista){
         if(!lista.hasData) return CircularProgressIndicator();
         if(lista.data == null) return Container();
@@ -30,7 +29,11 @@ class ContatoLista extends StatelessWidget {
         return ListView.builder(
           itemCount: listaContato.length,
           itemBuilder: (context, indice){
-            return Text('???????');
+            var contato = listaContato[indice];
+            return ListTile(title: Text(contato.nome!,),
+            leading: Image.network(contato.URLAvatar!),
+            subtitle: Text("${contato.telefone!} \n ${contato.email!}"),
+            );
           }
         );
       }
