@@ -15,10 +15,10 @@ Anotações e arquivos da matéria de **dispositivos mobile**
 * 📅30/09
 
 ### Contatos do Professor:
-* helio.kamakawa@ifpr.edu.br
-* Whatsapp +55 (44) 8447-2831
-* Atendimentos IFPR: Segunda 13h a 18h
-* GitHub: https://github.com/heliokamakawa
+* 📧 helio.kamakawa@ifpr.edu.br
+* 🟢 Whatsapp +55 (44) 8447-2831
+* 🏟 Atendimentos IFPR: Segunda 13h a 18h
+* ⬛ GitHub: https://github.com/heliokamakawa
 
 ### 💻Desenvolvedor💻
 
