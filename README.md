@@ -4,10 +4,11 @@
 Anotações e arquivos da matéria de **dispositivos mobile** 
 
 ### Segundo trimestre:
-* #### 📅03/08/2023 → Fechamento Diário / Retomada conteúdo
-* #### 📅03/08/2023 → Entrega projeto
-* #### 📅10/08/2023 → Avaliação 
-* #### 📅17/08/2023 → Recuperação
+* #### 📅06/07/2023 → Fechamento Diário.
+* #### 📅06/07/2023 → Avaliação (21h10).
+* #### 📅27/07/2023 → Retomada Conteúdo.
+* #### 📅27/07/2023 → Recuperação.
+* #### 📅10/08/2023 → Entrega Projeto.
 
 ### Sábados letivos:
 * 📅25/02
