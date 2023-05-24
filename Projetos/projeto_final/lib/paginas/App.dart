@@ -9,6 +9,10 @@ import 'package:projeto_final/paginas/Catalogo.dart';
 import 'package:projeto_final/paginas/Configu.dart';
 import 'package:projeto_final/paginas/Perfil.dart';
 import 'package:projeto_final/paginas/Sobre.dart';
+import 'package:projeto_final/paginas/listas/endereco_form.dart';
+import 'package:projeto_final/paginas/listas/endereco_lista.dart';
+import 'package:projeto_final/paginas/listas/endereco_detalhe.dart';
+
 import 'package:projeto_final/constants.dart';
 
 class App extends StatelessWidget {
@@ -46,6 +50,9 @@ class App extends StatelessWidget {
         'config':(context) => Configu(),
         'perfil':(context) => Perfil(),
         'sobre':(context) => Sobre(),
+        'endereco_lista': (context) => EnderecoLista(),
+        'endereco_form': (context) => EnderecoForm(),
+        'endereco_detalhe': (context) => EnderecoDetalhe(),
         'catalogo': (context) => Catalogo(),
         'compra': (context) => Compra(),
       },

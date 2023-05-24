@@ -43,6 +43,14 @@ class Perfil extends StatelessWidget {
               Navigator.pushNamed(context, 'login');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Endereços'),
+            onTap: () {
+              // lógica de logout
+              Navigator.pushNamed(context, 'endereco_lista');
+            },
+          ),
         ],
       ),
     );
