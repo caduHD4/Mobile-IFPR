@@ -38,7 +38,8 @@ class _EnderecoListaState extends State<EnderecoLista> {
       appBar: AppBar(title: const Text('Lista Enderecos')),
       body: criarLista(context),
       floatingActionButton: BotaoAdicionar(
-        acao: () => Navigator.pushNamed(context, 'endereco_form').then((value) => buscarEndereco())),
+          acao: () => Navigator.pushNamed(context, 'endereco_form')
+              .then((value) => buscarEndereco())),
       bottomNavigationBar: const BarraNavegacao(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -106,7 +107,7 @@ class ItemLista extends StatelessWidget {
     return ListTile(
       leading: FotoEndereco(endereco: endereco),
       title: Text(endereco.nome),
-      subtitle: Text(endereco.telefone),
+      subtitle: Text("${endereco.telefone}, ${endereco.cidade}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),
       onTap: detalhes,
     );
