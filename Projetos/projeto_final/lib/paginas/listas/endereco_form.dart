@@ -14,6 +14,7 @@ import 'package:projeto_final/paginas/widget/campo_bairro.dart';
 import 'package:projeto_final/paginas/widget/campo_rua.dart';
 import 'package:projeto_final/paginas/widget/campo_numero.dart';
 import 'package:projeto_final/paginas/widget/campo_complemento.dart';
+import 'package:projeto_final/paginas/listas/endereco_lista.dart';
 
 class EnderecoForm extends StatefulWidget {
   const EnderecoForm({Key? key}) : super(key: key);
@@ -31,26 +32,23 @@ class _EnderecoFormState extends State<EnderecoForm> {
     return Scaffold(
         appBar: AppBar(title: const Text('Cadastro')),
         body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                campoNome,
-                campoTelefone,
-                campoCPF,
-                campoCEP,
-                campoEstado,
-                campoCidade,
-                campoBairro,
-                campoRua,
-                campoNumero,
-                campoComplemento,
-                criarBotao(context),
-              ],
-            )
-          )
-        )
-      );
+            child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    campoNome,
+                    campoTelefone,
+                    campoCPF,
+                    campoCEP,
+                    campoEstado,
+                    campoCidade,
+                    campoBairro,
+                    campoRua,
+                    campoNumero,
+                    campoComplemento,
+                    criarBotao(context),
+                  ],
+                ))));
   }
 
   final campoNome = CampoNome(controle: TextEditingController());
@@ -67,13 +65,13 @@ class _EnderecoFormState extends State<EnderecoForm> {
   Widget criarBotao(BuildContext context) {
     return Botao(
       context: context,
-      salvar: () {
+      salvar: () async {
         var formState = formKey.currentState;
         if (formState != null && formState.validate()) {
           var endereco = preencherDTO();
           EnderecoInterfaceDAO dao = EnderecoDAOSQLite();
-          dao.salvar(endereco);
-          Navigator.pop(context);
+          await dao.salvar(endereco);
+          Navigator.pop(context, endereco);
         }
       },
     );

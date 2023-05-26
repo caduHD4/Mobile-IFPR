@@ -2,11 +2,10 @@
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
 
-class EnderecoDAOFake implements EnderecoInterfaceDAO{
-
+class EnderecoDAOFake implements EnderecoInterfaceDAO {
   @override
   Future<Endereco> consultar(int id) {
-    return Future.value(enderecos[id-1]);
+    return Future.value(enderecos[id - 1]);
   }
 
   @override
@@ -14,7 +13,7 @@ class EnderecoDAOFake implements EnderecoInterfaceDAO{
     return Future.value(enderecos);
   }
 
-  @override
+ @override
   bool excluir(dynamic id) {
     print('excluir ${enderecos[id-1]}');
     enderecos.remove(enderecos[id-1]);
@@ -23,8 +22,8 @@ class EnderecoDAOFake implements EnderecoInterfaceDAO{
 
   @override
   Endereco salvar(Endereco endereco) {
-    if(endereco.id == null){
-      endereco = Endereco( 
+    if (endereco.id == null) {
+      endereco = Endereco(
         id: enderecos.length,
         nome: endereco.nome,
         telefone: endereco.telefone,
@@ -38,8 +37,8 @@ class EnderecoDAOFake implements EnderecoInterfaceDAO{
         complemento: endereco.complemento,
       );
       enderecos.add(endereco);
-    }else {
-      int i = (endereco.id as int) -1;
+    } else {
+      int i = (endereco.id as int) - 1;
       enderecos[i] = endereco;
     }
     print(endereco);

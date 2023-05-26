@@ -7,7 +7,8 @@ class EnderecoDetalhes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Endereco endereco = ModalRoute.of(context)?.settings.arguments as Endereco;
+    final Endereco endereco =
+        ModalRoute.of(context)?.settings.arguments as Endereco;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Detalhes do Endereço')),
@@ -18,28 +19,62 @@ class EnderecoDetalhes extends StatelessWidget {
           children: [
             const SizedBox(height: 16.0),
             Center(
-              child: FotoEndereco(endereco: endereco),
+              child: Container(
+                width: 80.0,
+                height: 80.0,
+                child: FotoEndereco(endereco: endereco),
+              ),
+            ),
+            const SizedBox(height: 20.0),
+            Text(
+              'Nome: ${endereco.nome}',
+              style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-            Text('Nome: ${endereco.nome}'),
-            const SizedBox(height: 8.0),
-            Text('Telefone: ${endereco.telefone}'),
-            const SizedBox(height: 8.0),
-            Text('CPF: ${endereco.cpf}'),
-            const SizedBox(height: 8.0),
-            Text('CEP: ${endereco.cep}'),
-            const SizedBox(height: 8.0),
-            Text('Estado: ${endereco.estado}'),
-            const SizedBox(height: 8.0),
-            Text('Cidade: ${endereco.cidade}'),
-            const SizedBox(height: 8.0),
-            Text('Bairro: ${endereco.bairro}'),
-            const SizedBox(height: 8.0),
-            Text('Rua: ${endereco.rua}'),
-            const SizedBox(height: 8.0),
-            Text('Número: ${endereco.numero}'),
-            const SizedBox(height: 8.0),
-            Text('Complemento: ${endereco.complemento}'),
+            Text(
+              'Telefone: ${endereco.telefone}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'CPF: ${endereco.cpf}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'CEP: ${endereco.cep}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Estado: ${endereco.estado}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Cidade: ${endereco.cidade}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Bairro: ${endereco.bairro}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Rua: ${endereco.rua}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Número: ${endereco.numero}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            const SizedBox(height: 12.0),
+            Text(
+              'Complemento: ${endereco.complemento}',
+              style: TextStyle(fontSize: 20.0),
+            ),
           ],
         ),
       ),

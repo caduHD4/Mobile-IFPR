@@ -39,8 +39,15 @@ class _EnderecoListaState extends State<EnderecoLista> {
       appBar: AppBar(title: const Text('Lista Enderecos')),
       body: criarLista(context),
       floatingActionButton: BotaoAdicionar(
-          acao: () => Navigator.pushNamed(context, 'endereco_form')
-              .then((value) => buscarEndereco())),
+        acao: () async {
+          final result = await Navigator.pushNamed(context, 'endereco_form');
+          if (result != null) {
+            setState(() {
+              listaEnderecos.add(result as Endereco);
+            });
+          }
+        },
+      ),
       bottomNavigationBar: const BarraNavegacao(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -68,25 +75,30 @@ class _EnderecoListaState extends State<EnderecoLista> {
   }
 
   Widget criarItemLista(BuildContext context, Endereco endereco) {
-    return ItemLista(
-      endereco: endereco,
-      alterar: () {
-        Navigator.pushNamed(context, 'endereco_form', arguments: endereco).then((value) => buscarEndereco());
-        
-      },
-      detalhes: () {
-        Navigator.pushNamed(context, 'endereco_detalhe', arguments: endereco);
-      },
-      excluir: () async {
-        await dao.excluir(endereco.id);
-        await carregarEnderecos(); // Atualiza a lista após excluir
-        if (listaEnderecos.isEmpty) {
-          setState(() {}); // Atualiza o estado da lista vazia
-        }
-        //buscarEndereco();
-      },
-    );
-  }
+  return ItemLista(
+    endereco: endereco,
+    alterar: () async {
+      final result = await Navigator.pushNamed(context, 'endereco_form', arguments: endereco);
+      if (result != null) {
+        setState(() {
+          int index = listaEnderecos.indexOf(endereco);
+          listaEnderecos[index] = result as Endereco;
+        });
+      }
+    },
+    detalhes: () {
+      Navigator.pushNamed(context, 'endereco_detalhe', arguments: endereco);
+    },
+    excluir: () async {
+      await dao.excluir(endereco.id);
+      await carregarEnderecos();
+      if (listaEnderecos.isEmpty) {
+        setState(() {});
+      }
+    },
+  );
+}
+
 }
 
 class ItemLista extends StatelessWidget {
@@ -108,7 +120,8 @@ class ItemLista extends StatelessWidget {
     return ListTile(
       leading: FotoEndereco(endereco: endereco),
       title: Text(endereco.nome),
-      subtitle: Text("${endereco.telefone}, ${endereco.cidade}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
+      subtitle: Text(
+          "${endereco.telefone}, ${endereco.cidade}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),
       onTap: detalhes,
     );
