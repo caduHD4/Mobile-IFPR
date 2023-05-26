@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/database/daofake/endereco_dao_fake.dart';
+import 'package:projeto_final/database/sqlite/dao/contato_dao_sqlite.dart';
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
 import 'package:projeto_final/paginas/widget/botao.dart';
@@ -29,7 +30,8 @@ class _EnderecoFormState extends State<EnderecoForm> {
     receberEnderecoParaAlteracao(context);
     return Scaffold(
         appBar: AppBar(title: const Text('Cadastro')),
-        body: Form(
+        body: SingleChildScrollView(
+          child: Form(
             key: formKey,
             child: Column(
               children: [
@@ -45,7 +47,10 @@ class _EnderecoFormState extends State<EnderecoForm> {
                 campoComplemento,
                 criarBotao(context),
               ],
-            )));
+            )
+          )
+        )
+      );
   }
 
   final campoNome = CampoNome(controle: TextEditingController());
@@ -66,7 +71,7 @@ class _EnderecoFormState extends State<EnderecoForm> {
         var formState = formKey.currentState;
         if (formState != null && formState.validate()) {
           var endereco = preencherDTO();
-          EnderecoInterfaceDAO dao = EnderecoDAOFake();
+          EnderecoInterfaceDAO dao = EnderecoDAOSQLite();
           dao.salvar(endereco);
           Navigator.pop(context);
         }

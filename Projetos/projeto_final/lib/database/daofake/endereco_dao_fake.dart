@@ -1,4 +1,4 @@
-import 'package:projeto_final/database/daofake/dados_fake.dart';
+/*import 'package:projeto_final/database/daofake/dados_fake.dart';
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
 
@@ -46,3 +46,4 @@ class EnderecoDAOFake implements EnderecoInterfaceDAO{
     return endereco;
   }
 }
+*/

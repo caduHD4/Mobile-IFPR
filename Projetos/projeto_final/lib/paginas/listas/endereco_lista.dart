@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/database/daofake/endereco_dao_fake.dart';
+import 'package:projeto_final/database/sqlite/dao/contato_dao_sqlite.dart';
 import 'package:projeto_final/paginas/App.dart';
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
@@ -16,7 +17,7 @@ class EnderecoLista extends StatefulWidget {
 }
 
 class _EnderecoListaState extends State<EnderecoLista> {
-  EnderecoInterfaceDAO dao = EnderecoDAOFake();
+  EnderecoInterfaceDAO dao = EnderecoDAOSQLite();
   List<Endereco> listaEnderecos = [];
 
   @override
@@ -70,8 +71,8 @@ class _EnderecoListaState extends State<EnderecoLista> {
     return ItemLista(
       endereco: endereco,
       alterar: () {
-        Navigator.pushNamed(context, 'endereco_form', arguments: endereco)
-            .then((value) => buscarEndereco());
+        Navigator.pushNamed(context, 'endereco_form', arguments: endereco).then((value) => buscarEndereco());
+        
       },
       detalhes: () {
         Navigator.pushNamed(context, 'endereco_detalhe', arguments: endereco);
