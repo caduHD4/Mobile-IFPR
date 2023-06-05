@@ -1,22 +1,30 @@
+import 'package:flutter/foundation.dart';
+import 'package:persistencia/database/daofake/dados_fake.dart';
 import 'package:persistencia/database/sqlite/conexao.dart';
+import 'package:persistencia/database/sqlite/dao/cidade_dao_sqlite.dart';
+import 'package:persistencia/view/dto/cidade.dart';
 import 'package:persistencia/view/dto/contato.dart';
 import 'package:persistencia/view/interface/contato_interface_dao.dart';
-import 'package:sqflite/sqflite.dart'; //importanção
+import 'package:sqflite/sqflite.dart'; 
 
 class ContatoDAOSQLite implements ContatoInterfaceDAO{
   @override
   Future<Contato> consultar(int id) async {
     Database db = await  Conexao.criar();
-    List<Map> maps = await db.query('Contato',where: 'id = ?',whereArgs: [id]);
-    if (maps.isEmpty) throw Exception('Não foi encontrado registro com este id');
-    Map<dynamic,dynamic> resultado = maps.first;
-    return converterContato(resultado);
+    Map resultado = (await db.query('Contato',where: 'id = ?',whereArgs: [id])).first;
+    if (resultado.isEmpty) throw Exception('Não foi encontrado registro com este id');
+    return converter(resultado);
   }
 
   @override
   Future<List<Contato>> consultarTodos() async {
     Database db = await  Conexao.criar(); 
-    List<Contato> lista = (await db.query('contato')).map<Contato>(converterContato).toList();
+    List<Map<dynamic,dynamic>> resultadoBD = await db.query('contato');
+    List<Contato> lista = [];
+    for(var registro in resultadoBD){
+      var contato = await converter(registro);
+      lista.add(contato);
+    }
     return lista;
   }
   
@@ -30,31 +38,35 @@ class ContatoDAOSQLite implements ContatoInterfaceDAO{
 
   @override
   Future<Contato> salvar(Contato contato) async {
+    print('>>>>>${contato.cidade.id}');
     Database db = await  Conexao.criar();
     String sql;
     if(contato.id == null){
-      sql = 'INSERT INTO contato (nome, telefone,email,url_avatar) VALUES (?,?,?,?)';
-      int id = await db.rawInsert(sql,[contato.nome,contato.telefone,contato.email,contato.urlAvatar]);
+      sql = 'INSERT INTO contato (nome, telefone,email,url_avatar,cidade_id) VALUES (?,?,?,?,?)';
+      int id = await db.rawInsert(sql,[contato.nome,contato.telefone,contato.email,contato.urlAvatar,contato.cidade.id]);
       contato = Contato(
         id: id,
         nome: contato.nome, 
         telefone: contato.telefone, 
         email: contato.email, 
-        urlAvatar: contato.urlAvatar);
+        urlAvatar: contato.urlAvatar,
+        cidade: contato.cidade);
     }else{
-      sql = 'UPDATE contato SET nome = ?, telefone =?, email = ?, url_avatar= ? WHERE id = ?';
-      db.rawUpdate(sql,[contato.nome, contato.telefone, contato.email, contato.urlAvatar, contato.id]);
+      sql = 'UPDATE contato SET nome = ?, telefone =?, email = ?, url_avatar= ?, cidade_id= ? WHERE id = ?';
+      db.rawUpdate(sql,[contato.nome, contato.telefone, contato.email, contato.urlAvatar, contato.cidade.id, contato.id]);
     }
     return contato;
   }
 
-  Contato converterContato(Map<dynamic,dynamic> resultado){
+  Future<Contato> converter(Map<dynamic,dynamic> resultado) async{
+    Cidade cidade = await CidadeDAOSQLite().consultar(resultado['cidade_id']);
     return Contato(
       id : resultado['id'],
       nome: resultado['nome'],
       telefone: resultado['telefone'],
       email: resultado['email'],
-      urlAvatar:  resultado['url_avatar']
+      urlAvatar:  resultado['url_avatar'],
+      cidade: cidade
     );
   }
 }

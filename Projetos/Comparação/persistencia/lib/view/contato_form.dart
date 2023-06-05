@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:persistencia/database/daofake/contato_dao_fake.dart';
+import 'package:persistencia/database/sqlite/dao/cidade_dao_sqlite.dart';
 import 'package:persistencia/database/sqlite/dao/contato_dao_sqlite.dart';
+import 'package:persistencia/view/dto/cidade.dart';
 import 'package:persistencia/view/dto/contato.dart';
 import 'package:persistencia/view/interface/contato_interface_dao.dart';
 import 'package:persistencia/view/widget/botao.dart';
@@ -22,20 +23,29 @@ class _ContatoFormState extends State<ContatoForm> {
 
   @override
   Widget build(BuildContext context){
+    Future<List<Cidade>> cidades = CidadeDAOSQLite().consultarTodos();
     receberContatoParaAlteracao(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Cadastro')),
-      body: Form(
-        key: formKey,
-        child: Column( 
-          children: [
-            campoNome,
-            campoTelefone,
-            campoEmail,
-            campoURL,
-            criarBotao(context),
-          ],
-        )
+      body: FutureBuilder(
+        future: cidades,
+        builder: (context,AsyncSnapshot<List<Cidade>> lista){
+          if(!lista.hasData || lista.data == null) return const Text('Necessário realizar o cadastro de cidade');
+          listaCidades = lista.data!;
+          return Form(
+            key: formKey,
+            child: Column( 
+              children: [
+                campoNome,
+                campoTelefone,
+                campoEmail,
+                campoURL,
+                campoOpcoes = criarCampoOpcoes(listaCidades),
+                criarBotao(context),
+              ],
+            )
+          );
+        }
       )
     );
   }
@@ -44,6 +54,9 @@ class _ContatoFormState extends State<ContatoForm> {
   final campoTelefone = CampoTelefone(controle: TextEditingController());
   final campoEmail = CampoEmail(controle: TextEditingController());
   final campoURL = CampoURL(controle: TextEditingController());
+  late DropdownButton<Cidade> campoOpcoes;
+  late List<Cidade> listaCidades;
+  late Cidade cidadeSelecionada;
 
   Widget criarBotao(BuildContext context){
     return Botao(
@@ -68,6 +81,23 @@ class _ContatoFormState extends State<ContatoForm> {
       preencherCampos(contato);
     }
   }
+  
+  DropdownButton<Cidade> criarCampoOpcoes(List<Cidade> cidades) {
+    return DropdownButton<Cidade>(
+      hint: const Text('cidade onde mora'),
+      isExpanded: true,
+      items: cidades.map(
+        (cidade) => DropdownMenuItem(
+          value: cidade,
+          child: Text(cidade.nome))
+      ).toList(),
+      onChanged: (value){
+        setState(() {
+          if(value != null) cidadeSelecionada = value;
+        });
+      }
+    );
+  }
 
   Contato preencherDTO(){
     return Contato(
@@ -75,7 +105,8 @@ class _ContatoFormState extends State<ContatoForm> {
       nome: campoNome.controle.text,
       email: campoEmail.controle.text,
       telefone: campoTelefone.controle.text,
-      urlAvatar: campoURL.controle.text
+      urlAvatar: campoURL.controle.text,
+      cidade: cidadeSelecionada
     );
   }
 

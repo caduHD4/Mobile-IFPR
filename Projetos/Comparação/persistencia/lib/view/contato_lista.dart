@@ -82,7 +82,7 @@ class ItemLista extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(  
       leading: FotoContato(contato: contato),
-      title: Text(contato.nome),
+      title: Text('${contato.nome} (${contato.cidade.nome})'),
       subtitle: Text(contato.telefone),
       trailing: PainelBotoes(
         alterar: alterar, 

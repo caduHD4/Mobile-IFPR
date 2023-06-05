@@ -31,6 +31,7 @@ class ContatoDAOFake implements ContatoInterfaceDAO{
         telefone: contato.telefone,
         email: contato.email,
         urlAvatar: contato.urlAvatar,
+        cidade: contato.cidade
       );
       contatos.add(contato);
     }else {
