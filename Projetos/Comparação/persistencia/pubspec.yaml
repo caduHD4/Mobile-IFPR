@@ -38,6 +38,7 @@ dependencies:
   mask_text_input_formatter:
   sqflite:
   path:
+  foundation:
 
 dev_dependencies:
   flutter_test:

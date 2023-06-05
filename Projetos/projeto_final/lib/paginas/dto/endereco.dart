@@ -1,3 +1,5 @@
+import 'package:projeto_final/paginas/dto/cidade.dart';
+
 class Endereco{
   final dynamic id;
   final String nome;
@@ -5,7 +7,7 @@ class Endereco{
   final String cpf;
   final String cep;
   final String estado;
-  final String cidade;
+  final Cidade cidade;
   final String bairro;
   final String rua;
   final String numero;

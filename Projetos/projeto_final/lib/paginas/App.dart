@@ -21,6 +21,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Farma System',
       theme: ThemeData(
         brightness: Brightness.dark,

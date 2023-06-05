@@ -8,13 +8,14 @@ class Conexao {
 
   static Future<Database> criar() async {
     if (_fechado) {
-      String path = join(await getDatabasesPath(),'banco.db');                                
-      _database = await openDatabase(
-        path, 
-        version: 1,
-        onCreate: (db, v) {
-          db.execute(criarEndereco);
-          insercoesEndereco.forEach(db.execute);
+      String path = join(await getDatabasesPath(), 'banco.db');  
+      deleteDatabase(path);                                    
+      _database = await openDatabase(                  
+        path,                                          
+        version: 1,                                    
+        onCreate: (db, v){                             
+          criarTabelas.forEach(db.execute);
+          insercoes.forEach(db.execute);
         },
       );
       _fechado = false;

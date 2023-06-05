@@ -119,7 +119,7 @@ class ItemLista extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: FotoEndereco(endereco: endereco),
-      title: Text(endereco.nome),
+      title: Text('${endereco.nome} (${endereco.cidade.nome})'),
       subtitle: Text(
           "${endereco.telefone}, ${endereco.cidade}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),

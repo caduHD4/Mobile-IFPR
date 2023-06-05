@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/database/daofake/endereco_dao_fake.dart';
+import 'package:projeto_final/database/sqlite/dao/cidade_dao_sqlite.dart';
+import 'package:projeto_final/paginas/dto/cidade.dart';
 import 'package:projeto_final/database/sqlite/dao/contato_dao_sqlite.dart';
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
@@ -28,11 +29,16 @@ class _EnderecoFormState extends State<EnderecoForm> {
   dynamic id;
   @override
   Widget build(BuildContext context) {
+    Future<List<Cidade>> cidades = CidadeDAOSQLite().consultarTodos();
     receberEnderecoParaAlteracao(context);
     return Scaffold(
         appBar: AppBar(title: const Text('Cadastro')),
-        body: SingleChildScrollView(
-            child: Form(
+        body: FutureBuilder(
+            future: cidades,
+            builder: (context,AsyncSnapshot<List<Cidade>> lista){
+              if(!lista.hasData || lista.data == null) return const Text('Necessário realizar o cadastro de cidade');
+              listaCidades = lista.data!;
+              return Form(
                 key: formKey,
                 child: Column(
                   children: [
@@ -41,26 +47,33 @@ class _EnderecoFormState extends State<EnderecoForm> {
                     campoCPF,
                     campoCEP,
                     campoEstado,
-                    campoCidade,
+                    campoOpcoes = criarCampoOpcoes(listaCidades),
                     campoBairro,
                     campoRua,
                     campoNumero,
                     campoComplemento,
                     criarBotao(context),
                   ],
-                ))));
-  }
+                )
+              );
+            }
+          )
+        );
+      }
 
   final campoNome = CampoNome(controle: TextEditingController());
   final campoTelefone = CampoTelefone(controle: TextEditingController());
   final campoCPF = CampoCPF(controle: TextEditingController());
   final campoCEP = CampoCEP(controle: TextEditingController());
   final campoEstado = CampoEstado(controle: TextEditingController());
-  final campoCidade = CampoCidade(controle: TextEditingController());
   final campoBairro = CampoBairro(controle: TextEditingController());
   final campoRua = CampoRua(controle: TextEditingController());
   final campoNumero = CampoNumero(controle: TextEditingController());
   final campoComplemento = CampoComplemento(controle: TextEditingController());
+  late DropdownButton<Cidade> campoOpcoes;
+  late List<Cidade> listaCidades;
+  late Cidade cidadeSelecionada;
+
 
   Widget criarBotao(BuildContext context) {
     return Botao(
@@ -86,6 +99,23 @@ class _EnderecoFormState extends State<EnderecoForm> {
     }
   }
 
+  DropdownButton<Cidade> criarCampoOpcoes(List<Cidade> cidades) {
+    return DropdownButton<Cidade>(
+      hint: const Text('cidade onde mora'),
+      isExpanded: true,
+      items: cidades.map(
+        (cidade) => DropdownMenuItem(
+          value: cidade,
+          child: Text(cidade.nome))
+      ).toList(),
+      onChanged: (value){
+        setState(() {
+          if(value != null) cidadeSelecionada = value;
+        });
+      }
+    );
+  }
+
   Endereco preencherDTO() {
     return Endereco(
       id: id,
@@ -94,7 +124,7 @@ class _EnderecoFormState extends State<EnderecoForm> {
       cpf: campoCPF.controle.text,
       cep: campoCEP.controle.text,
       estado: campoEstado.controle.text,
-      cidade: campoCidade.controle.text,
+      cidade: cidadeSelecionada,
       bairro: campoBairro.controle.text,
       rua: campoRua.controle.text,
       numero: campoNumero.controle.text,
@@ -108,7 +138,6 @@ class _EnderecoFormState extends State<EnderecoForm> {
     campoCPF.controle.text = endereco.cpf;
     campoCEP.controle.text = endereco.cep;
     campoEstado.controle.text = endereco.estado;
-    campoCidade.controle.text = endereco.cidade;
     campoBairro.controle.text = endereco.bairro;
     campoRua.controle.text = endereco.rua;
     campoNumero.controle.text = endereco.numero;
