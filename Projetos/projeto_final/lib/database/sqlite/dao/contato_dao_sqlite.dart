@@ -95,5 +95,17 @@ class EnderecoDAOSQLite implements EnderecoInterfaceDAO {
         numero: resultado['numero'],
         complemento: resultado['complemento']);
   }
+  
+  @override
+  Future<void> adicionarCliente(int enderecoId, int clienteId) {
+    // TODO: implement adicionarCliente
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> removerCliente(int enderecoId, int clienteId) {
+    // TODO: implement removerCliente
+    throw UnimplementedError();
+  }
 
 }

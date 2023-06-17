@@ -5,4 +5,6 @@ abstract class EnderecoInterfaceDAO{
   Future<bool> excluir(dynamic id);
   Future<Endereco> consultar(int id);
   Future<List<Endereco>>  consultarTodos();
+  Future<void> adicionarCliente(int enderecoId, int clienteId);
+  Future<void> removerCliente(int enderecoId, int clienteId);
 }
