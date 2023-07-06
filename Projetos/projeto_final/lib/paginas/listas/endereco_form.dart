@@ -38,23 +38,25 @@ class _EnderecoFormState extends State<EnderecoForm> {
             builder: (context,AsyncSnapshot<List<Cidade>> lista){
               if(!lista.hasData || lista.data == null) return const Text('Necessário realizar o cadastro de cidade');
               listaCidades = lista.data!;
-              return Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    campoNome,
-                    campoTelefone,
-                    campoCPF,
-                    campoCEP,
-                    campoEstado,
-                    campoOpcoes = criarCampoOpcoes(listaCidades),
-                    campoBairro,
-                    campoRua,
-                    campoNumero,
-                    campoComplemento,
-                    criarBotao(context),
-                  ],
-                )
+              return SingleChildScrollView(
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      campoNome,
+                      campoTelefone,
+                      campoCPF,
+                      campoCEP,
+                      campoEstado,
+                      campoOpcoes = criarCampoOpcoes(listaCidades),
+                      campoBairro,
+                      campoRua,
+                      campoNumero,
+                      campoComplemento,
+                      criarBotao(context),
+                    ],
+                  ),
+                ),
               );
             }
           )
@@ -138,6 +140,7 @@ class _EnderecoFormState extends State<EnderecoForm> {
     campoCPF.controle.text = endereco.cpf;
     campoCEP.controle.text = endereco.cep;
     campoEstado.controle.text = endereco.estado;
+    cidadeSelecionada = endereco.cidade;
     campoBairro.controle.text = endereco.bairro;
     campoRua.controle.text = endereco.rua;
     campoNumero.controle.text = endereco.numero;
