@@ -12,6 +12,8 @@ import 'package:projeto_final/paginas/Sobre.dart';
 import 'package:projeto_final/paginas/listas/endereco_form.dart';
 import 'package:projeto_final/paginas/listas/endereco_lista.dart';
 import 'package:projeto_final/paginas/listas/endereco_detalhes.dart';
+import 'package:projeto_final/paginas/listas/cliente_lista.dart';
+import 'package:projeto_final/paginas/listas/cliente_form.dart';
 
 import 'package:projeto_final/constants.dart';
 
@@ -51,6 +53,9 @@ class App extends StatelessWidget {
         'config':(context) => Configu(),
         'perfil':(context) => Perfil(),
         'sobre':(context) => Sobre(),
+        'cliente_lista': (context) => ClienteLista(),
+        'cliente_form': (context) => ClienteForm(),
+        /*'cliente_detalhe': (context) => ClienteDetalhes(), */
         'endereco_lista': (context) => EnderecoLista(),
         'endereco_form': (context) => EnderecoForm(),
         'endereco_detalhe': (context) => EnderecoDetalhes(),

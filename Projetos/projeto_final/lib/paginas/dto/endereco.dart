@@ -28,6 +28,12 @@ class Endereco{
   });
 
   @override
+  bool operator ==(other) => 
+    other is Endereco && 
+    other.nome == nome && 
+    other.id == id;
+
+  @override
   String toString() {
     return '''
       $id

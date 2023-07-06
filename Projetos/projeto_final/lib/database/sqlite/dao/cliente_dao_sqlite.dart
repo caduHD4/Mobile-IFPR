@@ -11,22 +11,23 @@ class ClienteDAOSQLite implements ClienteInterfaceDAO {
   Future<Cliente> salvar(Cliente cliente) async {
     Database db = await Conexao.criar();
     if (cliente.id == null) {
-      int id = await db.insert('cliente', {'nome': cliente.nome});
+      int id = await db.insert('cliente', {'nome': cliente.nome, 'cpf': cliente.cpf});
       return Cliente(id: id, nome: cliente.nome, cpf: cliente.cpf);
     } else {
-      await db.update('cliente', {'nome': cliente.nome},
+      await db.update('cliente', {'nome': cliente.nome, 'cpf': cliente.cpf},
           where: 'id = ?', whereArgs: [cliente.id]);
       return cliente;
     }
   }
 
   @override
-  Future<bool> excluir(int id) async {
+  Future<bool> excluir(id) async {
     Database db = await Conexao.criar();
-    int linhasAfetadas =
-        await db.delete('cliente', where: 'id = ?', whereArgs: [id]);
-    return linhasAfetadas > 0;
+    var sql = 'DELETE FROM cliente WHERE id = ?';
+    int linhasAfetas = await db.rawDelete(sql, [id]);
+    return linhasAfetas > 0;
   }
+
 
   @override
   Future<Cliente> consultar(int id) async {
@@ -46,7 +47,7 @@ class ClienteDAOSQLite implements ClienteInterfaceDAO {
     List<Map<String, dynamic>> resultado = await db.query('cliente');
     return resultado
         .map((registro) =>
-            Cliente(id: registro['id'], nome: registro['nome'], cpf: ''))
+            Cliente(id: registro['id'], nome: registro['nome'], cpf: registro['cpf']))
         .toList();
   }
 

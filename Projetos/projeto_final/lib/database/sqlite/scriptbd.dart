@@ -50,6 +50,7 @@ CREATE TABLE grupo_endereco(
   '''
     CREATE TABLE cliente(
       id INTEGER NOT NULL PRIMARY KEY,
+      cpf VARCHAR(14) NOT NULL,
       nome VARCHAR(200) NOT NULL
     )
   ''',
@@ -77,7 +78,6 @@ CREATE TABLE grupo_endereco(
     PRIMARY KEY (pedido_id, produto_id)
   )
   ''',
-
   '''
 CREATE TABLE cliente_endereco(
     cliente_id INTEGER NOT NULL,
@@ -141,5 +141,9 @@ VALUES ('Maria Rosa', '(44) 99852-8569', '716.734.530-07', '84023-500', 'Paraná
   '''
 INSERT INTO endereco (nome, telefone, cpf, cep, estado, cidade_id, bairro, rua, numero, complemento)
 VALUES ('Josefina Santos', '(44) 99852-8569', '533.214.280-32', '85028-030', 'Paraná', 4, 'Zona 9', 'Av. Brasil', '123', 'apto 67')
-'''
+''',
+  '''
+INSERT INTO cliente (nome, cpf)
+VALUES ('cadu', '11489656960')
+''',
 ];

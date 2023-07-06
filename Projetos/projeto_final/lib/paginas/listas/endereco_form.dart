@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/database/sqlite/dao/cidade_dao_sqlite.dart';
-import 'package:projeto_final/paginas/dto/cidade.dart';
 import 'package:projeto_final/database/sqlite/dao/contato_dao_sqlite.dart';
 import 'package:projeto_final/paginas/dto/endereco.dart';
 import 'package:projeto_final/paginas/interface/endereco_interface_dao.dart';
@@ -10,7 +8,7 @@ import 'package:projeto_final/paginas/widget/campo_telefone.dart';
 import 'package:projeto_final/paginas/widget/campo_cpf.dart';
 import 'package:projeto_final/paginas/widget/campo_cep.dart';
 import 'package:projeto_final/paginas/widget/campo_estado.dart';
-import 'package:projeto_final/paginas/widget/campo_cidade.dart';
+import 'package:projeto_final/paginas/widget/campo_opcoes_cidade.dart';
 import 'package:projeto_final/paginas/widget/campo_bairro.dart';
 import 'package:projeto_final/paginas/widget/campo_rua.dart';
 import 'package:projeto_final/paginas/widget/campo_numero.dart';
@@ -27,42 +25,6 @@ class EnderecoForm extends StatefulWidget {
 class _EnderecoFormState extends State<EnderecoForm> {
   final formKey = GlobalKey<FormState>();
   dynamic id;
-  @override
-  Widget build(BuildContext context) {
-    Future<List<Cidade>> cidades = CidadeDAOSQLite().consultarTodos();
-    receberEnderecoParaAlteracao(context);
-    return Scaffold(
-        appBar: AppBar(title: const Text('Cadastro')),
-        body: FutureBuilder(
-            future: cidades,
-            builder: (context,AsyncSnapshot<List<Cidade>> lista){
-              if(!lista.hasData || lista.data == null) return const Text('Necessário realizar o cadastro de cidade');
-              listaCidades = lista.data!;
-              return SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      campoNome,
-                      campoTelefone,
-                      campoCPF,
-                      campoCEP,
-                      campoEstado,
-                      campoOpcoes = criarCampoOpcoes(listaCidades),
-                      campoBairro,
-                      campoRua,
-                      campoNumero,
-                      campoComplemento,
-                      criarBotao(context),
-                    ],
-                  ),
-                ),
-              );
-            }
-          )
-        );
-      }
-
   final campoNome = CampoNome(controle: TextEditingController());
   final campoTelefone = CampoTelefone(controle: TextEditingController());
   final campoCPF = CampoCPF(controle: TextEditingController());
@@ -72,20 +34,45 @@ class _EnderecoFormState extends State<EnderecoForm> {
   final campoRua = CampoRua(controle: TextEditingController());
   final campoNumero = CampoNumero(controle: TextEditingController());
   final campoComplemento = CampoComplemento(controle: TextEditingController());
-  late DropdownButton<Cidade> campoOpcoes;
-  late List<Cidade> listaCidades;
-  late Cidade cidadeSelecionada;
+  final campoCidade = CampoOpcoesCidade();
 
+  @override
+  Widget build(BuildContext context) {
+    receberEnderecoParaAlteracao(context);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Cadastro')),
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              campoNome,
+              campoTelefone,
+              campoCPF,
+              campoCEP,
+              campoEstado,
+              campoCidade,
+              campoBairro,
+              campoRua,
+              campoNumero,
+              campoComplemento,
+              criarBotao(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget criarBotao(BuildContext context) {
     return Botao(
       context: context,
-      salvar: () async {
+      salvar: () {
         var formState = formKey.currentState;
         if (formState != null && formState.validate()) {
           var endereco = preencherDTO();
           EnderecoInterfaceDAO dao = EnderecoDAOSQLite();
-          await dao.salvar(endereco);
+          dao.salvar(endereco);
           Navigator.pop(context, endereco);
         }
       },
@@ -101,23 +88,6 @@ class _EnderecoFormState extends State<EnderecoForm> {
     }
   }
 
-  DropdownButton<Cidade> criarCampoOpcoes(List<Cidade> cidades) {
-    return DropdownButton<Cidade>(
-      hint: const Text('cidade onde mora'),
-      isExpanded: true,
-      items: cidades.map(
-        (cidade) => DropdownMenuItem(
-          value: cidade,
-          child: Text(cidade.nome))
-      ).toList(),
-      onChanged: (value){
-        setState(() {
-          if(value != null) cidadeSelecionada = value;
-        });
-      }
-    );
-  }
-
   Endereco preencherDTO() {
     return Endereco(
       id: id,
@@ -126,7 +96,7 @@ class _EnderecoFormState extends State<EnderecoForm> {
       cpf: campoCPF.controle.text,
       cep: campoCEP.controle.text,
       estado: campoEstado.controle.text,
-      cidade: cidadeSelecionada,
+      cidade: campoCidade.opcaoSelecionado!,
       bairro: campoBairro.controle.text,
       rua: campoRua.controle.text,
       numero: campoNumero.controle.text,
@@ -140,7 +110,7 @@ class _EnderecoFormState extends State<EnderecoForm> {
     campoCPF.controle.text = endereco.cpf;
     campoCEP.controle.text = endereco.cep;
     campoEstado.controle.text = endereco.estado;
-    cidadeSelecionada = endereco.cidade;
+    campoCidade.opcaoSelecionado = endereco.cidade;
     campoBairro.controle.text = endereco.bairro;
     campoRua.controle.text = endereco.rua;
     campoNumero.controle.text = endereco.numero;

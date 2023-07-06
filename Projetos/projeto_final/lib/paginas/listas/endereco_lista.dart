@@ -75,30 +75,30 @@ class _EnderecoListaState extends State<EnderecoLista> {
   }
 
   Widget criarItemLista(BuildContext context, Endereco endereco) {
-  return ItemLista(
-    endereco: endereco,
-    alterar: () async {
-      final result = await Navigator.pushNamed(context, 'endereco_form', arguments: endereco);
-      if (result != null) {
-        setState(() {
-          int index = listaEnderecos.indexOf(endereco);
-          listaEnderecos[index] = result as Endereco;
-        });
-      }
-    },
-    detalhes: () {
-      Navigator.pushNamed(context, 'endereco_detalhe', arguments: endereco);
-    },
-    excluir: () async {
-      await dao.excluir(endereco.id);
-      await carregarEnderecos();
-      if (listaEnderecos.isEmpty) {
-        setState(() {});
-      }
-    },
-  );
-}
-
+    return ItemLista(
+      endereco: endereco,
+      alterar: () async {
+        final result = await Navigator.pushNamed(context, 'endereco_form',
+            arguments: endereco);
+        if (result != null) {
+          setState(() {
+            int index = listaEnderecos.indexOf(endereco);
+            listaEnderecos[index] = result as Endereco;
+          });
+        }
+      },
+      detalhes: () {
+        Navigator.pushNamed(context, 'endereco_detalhe', arguments: endereco);
+      },
+      excluir: () async {
+        await dao.excluir(endereco.id);
+        await carregarEnderecos();
+        if (listaEnderecos.isEmpty) {
+          setState(() {});
+        }
+      },
+    );
+  }
 }
 
 class ItemLista extends StatelessWidget {
@@ -121,7 +121,7 @@ class ItemLista extends StatelessWidget {
       leading: FotoEndereco(endereco: endereco),
       title: Text('${endereco.nome} (${endereco.cidade.nome})'),
       subtitle: Text(
-          "${endereco.telefone}, ${endereco.cidade}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
+          "${endereco.telefone}, ${endereco.estado}, ${endereco.rua}, ${endereco.numero}"),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),
       onTap: detalhes,
     );

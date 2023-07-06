@@ -7,4 +7,19 @@ class Estado{
     required this.nome,
     required this.sigla
   });
+
+  @override
+  bool operator ==(other) => 
+    other is Estado && 
+    other.nome == nome && 
+    other.id == id;
+
+  @override
+  String toString() {
+    return '''
+      $id
+      $nome 
+      $sigla 
+    ''';
+  }
 }
