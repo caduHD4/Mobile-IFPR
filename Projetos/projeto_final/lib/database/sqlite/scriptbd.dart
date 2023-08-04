@@ -58,6 +58,7 @@ CREATE TABLE grupo_endereco(
     CREATE TABLE produto(
       id INTEGER NOT NULL PRIMARY KEY,
       nome VARCHAR(200) NOT NULL,
+      descricao VARCHAR(200) NOT NULL,
       preco DECIMAL(10,2) NOT NULL
     )
   ''',
@@ -65,6 +66,7 @@ CREATE TABLE grupo_endereco(
   CREATE TABLE pedido (
     id INTEGER PRIMARY KEY,
     data TEXT,
+    descricao VARCHAR(200) NOT NULL,
     cliente_id INTEGER,
     FOREIGN KEY (cliente_id) REFERENCES cliente (id)
   )
@@ -145,5 +147,14 @@ VALUES ('Josefina Santos', '(44) 99852-8569', '533.214.280-32', '85028-030', 'Pa
   '''
 INSERT INTO cliente (nome, cpf)
 VALUES ('cadu', '11489656960')
+''',
+  '''
+INSERT INTO produto (nome, descricao, preco)
+VALUES ('rivotril', 'pra te acalmar', '10.50')
+''',
+
+'''
+INSERT INTO pedido (data, descricao, cliente_id)
+VALUES ('04/08/2023', 'muita coisa', 1)
 ''',
 ];

@@ -1,7 +1,12 @@
 class Produto {
-  final int? id;
+  final dynamic id;
   final String nome;
+  final String descricao;
   final double preco;
 
-  Produto({this.id, required this.nome, required this.preco});
+  Produto(
+      {required this.id,
+      required this.nome,
+      required this.descricao,
+      required this.preco});
 }

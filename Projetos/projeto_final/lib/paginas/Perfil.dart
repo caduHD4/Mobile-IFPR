@@ -79,7 +79,14 @@ class Perfil extends StatelessWidget {
             leading: const Icon(Icons.shopping_cart),
             title: const Text('Pedidos'),
             onTap: () {
-              Navigator.pushNamed(context, 'pedidos_lista');
+              Navigator.pushNamed(context, 'pedido_lista');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.production_quantity_limits),
+            title: const Text('Produto'),
+            onTap: () {
+              Navigator.pushNamed(context, 'produto_lista');
             },
           ),
         ],

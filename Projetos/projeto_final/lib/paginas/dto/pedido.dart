@@ -1,7 +1,14 @@
-class Pedido {
-  final int? id;
-  final String data;
-  final int clienteId;
+import 'package:projeto_final/paginas/dto/cliente.dart';
 
-  Pedido({this.id, required this.data, required this.clienteId});
+class Pedido {
+  final dynamic id;
+  final String data;
+  final String descricao;
+  final Cliente clienteId;
+
+  Pedido(
+      {required this.id,
+      required this.data,
+      required this.descricao,
+      required this.clienteId});
 }

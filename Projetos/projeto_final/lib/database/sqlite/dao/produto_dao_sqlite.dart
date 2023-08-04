@@ -10,14 +10,16 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
     if (produto.id == null) {
       int id = await db.insert('produto', {
         'nome': produto.nome,
+        'descricao': produto.descricao,
         'preco': produto.preco,
       });
-      return Produto(id: id, nome: produto.nome, preco: produto.preco);
+      return Produto(id: id, nome: produto.nome, descricao: produto.descricao, preco: produto.preco);
     } else {
       await db.update(
           'produto',
           {
             'nome': produto.nome,
+            'descricao': produto.descricao,
             'preco': produto.preco,
           },
           where: 'id = ?',
@@ -44,6 +46,7 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
     return Produto(
         id: registro['id'],
         nome: registro['nome'],
+        descricao: registro['descricao'],
         preco: registro['preco']);
   }
 
@@ -54,6 +57,7 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
     return resultado.map((registro) => Produto(
         id: registro['id'],
         nome: registro['nome'],
+        descricao: registro['descricao'],
         preco: registro['preco'])).toList();
   }
 }
