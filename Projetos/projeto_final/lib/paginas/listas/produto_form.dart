@@ -6,6 +6,7 @@ import 'package:projeto_final/paginas/widget/botao.dart';
 import 'package:projeto_final/paginas/widget/campo_descricao.dart';
 import 'package:projeto_final/paginas/widget/campo_nome.dart';
 import 'package:projeto_final/paginas/widget/campo_preco.dart';
+import 'package:projeto_final/paginas/widget/campo_url.dart';
 
 class ProdutoForm extends StatefulWidget {
   const ProdutoForm({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _ProdutoFormState extends State<ProdutoForm> {
   final campoNome = CampoNome(controle: TextEditingController());
   final campoDescricao = CampoDescricao(controle: TextEditingController());
   final campoPreco = CampoPreco(controle: TextEditingController());
+  final campoUrlAvatar = CampoURL(controle: TextEditingController());
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +73,7 @@ class _ProdutoFormState extends State<ProdutoForm> {
       id: id,
       nome: campoNome.controle.text,
       descricao: campoDescricao.controle.text,
+      urlAvatar: campoUrlAvatar.controle.text,
       preco: double.parse(campoPreco.controle.text),
     );
   }

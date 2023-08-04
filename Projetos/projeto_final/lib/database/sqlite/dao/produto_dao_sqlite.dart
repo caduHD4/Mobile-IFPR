@@ -13,12 +13,13 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
         'descricao': produto.descricao,
         'preco': produto.preco,
       });
-      return Produto(id: id, nome: produto.nome, descricao: produto.descricao, preco: produto.preco);
+      return Produto(id: id, nome: produto.nome, descricao: produto.descricao, preco: produto.preco, urlAvatar: produto.urlAvatar);
     } else {
       await db.update(
           'produto',
           {
             'nome': produto.nome,
+            'url_avatar': produto.urlAvatar,
             'descricao': produto.descricao,
             'preco': produto.preco,
           },
@@ -46,6 +47,7 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
     return Produto(
         id: registro['id'],
         nome: registro['nome'],
+        urlAvatar: registro['url_avatar'],
         descricao: registro['descricao'],
         preco: registro['preco']);
   }
@@ -57,6 +59,7 @@ class ProdutoDAOSQLite implements ProdutoInterfaceDAO {
     return resultado.map((registro) => Produto(
         id: registro['id'],
         nome: registro['nome'],
+        urlAvatar: registro['url_avatar'],
         descricao: registro['descricao'],
         preco: registro['preco'])).toList();
   }

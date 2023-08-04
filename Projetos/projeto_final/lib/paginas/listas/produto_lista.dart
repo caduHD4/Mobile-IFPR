@@ -5,6 +5,7 @@ import 'package:projeto_final/paginas/dto/produto.dart';
 import 'package:projeto_final/paginas/interface/produto_interface_dao.dart';
 import 'package:projeto_final/paginas/widget/barra_navegacao.dart';
 import 'package:projeto_final/paginas/widget/botao_adicionar.dart';
+import 'package:projeto_final/paginas/widget/foto_produto.dart';
 import 'package:projeto_final/paginas/widget/painel_botoes.dart';
 
 class ProdutoLista extends StatefulWidget {
@@ -116,7 +117,9 @@ class ItemLista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: FotoProduto(produto: produto),
       title: Text("${produto.nome}"),
+      
       subtitle: Text("${produto.descricao}, R\$${produto.preco}"),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),
       onTap: detalhes,

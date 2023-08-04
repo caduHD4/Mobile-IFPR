@@ -42,22 +42,23 @@ class Home extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15),
               child: ListView(scrollDirection: Axis.horizontal, children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
-                      Navigator.push(context, rota);
-                    },
-                    child: Container(
-                      width: 140,
-                      margin: EdgeInsets.only(left: 16, right: 8),
-                      child: Image.asset('assets/Dipirona.jpg'),
-                    ),
-                  )
-                ),
+                    child: GestureDetector(
+                  onTap: () {
+                    Route rota =
+                        MaterialPageRoute(builder: (context) => Produto());
+                    Navigator.push(context, rota);
+                  },
+                  child: Container(
+                    width: 140,
+                    margin: EdgeInsets.only(left: 16, right: 8),
+                    child: Image.asset('assets/Dipirona.jpg'),
+                  ),
+                )),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -70,7 +71,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -83,7 +85,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -96,7 +99,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -109,7 +113,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -122,7 +127,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Route rota = MaterialPageRoute(builder: (context) => Produto());
+                      Route rota =
+                          MaterialPageRoute(builder: (context) => Produto());
                       Navigator.push(context, rota);
                     },
                     child: Container(
@@ -140,4 +146,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-

@@ -58,6 +58,7 @@ CREATE TABLE grupo_endereco(
     CREATE TABLE produto(
       id INTEGER NOT NULL PRIMARY KEY,
       nome VARCHAR(200) NOT NULL,
+      url_avatar VARCHAR(300) NOT NULL,
       descricao VARCHAR(200) NOT NULL,
       preco DECIMAL(10,2) NOT NULL
     )
@@ -149,11 +150,10 @@ INSERT INTO cliente (nome, cpf)
 VALUES ('cadu', '11489656960')
 ''',
   '''
-INSERT INTO produto (nome, descricao, preco)
-VALUES ('rivotril', 'pra te acalmar', '10.50')
+INSERT INTO produto (nome, descricao, preco, url_avatar)
+VALUES ('rivotril', 'pra te acalmar', '10.50', 'https://pfarma.com.br/images/stories/rivotril-medicamento-controlado.jpg')
 ''',
-
-'''
+  '''
 INSERT INTO pedido (data, descricao, cliente_id)
 VALUES ('04/08/2023', 'muita coisa', 1)
 ''',
