@@ -22,6 +22,14 @@ class Perfil extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Endereços'),
+            onTap: () {
+              // lógica de logout
+              Navigator.pushNamed(context, 'endereco_lista');
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Configurações'),
             onTap: () {
@@ -43,12 +51,35 @@ class Perfil extends StatelessWidget {
               Navigator.pushNamed(context, 'login');
             },
           ),
+          const Divider(
+            thickness: 2,
+          ),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Endereços'),
+            leading: const Icon(Icons.people),
+            title: const Text('Clientes'),
             onTap: () {
-              // lógica de logout
-              Navigator.pushNamed(context, 'endereco_lista');
+              Navigator.pushNamed(context, 'cliente_lista');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.location_searching),
+            title: const Text('Estados'),
+            onTap: () {
+              Navigator.pushNamed(context, 'estado_lista');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.location_city),
+            title: const Text('Cidades'),
+            onTap: () {
+              Navigator.pushNamed(context, 'cidade_lista');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_cart),
+            title: const Text('Pedidos'),
+            onTap: () {
+              Navigator.pushNamed(context, 'pedidos_lista');
             },
           ),
         ],
