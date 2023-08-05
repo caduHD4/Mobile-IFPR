@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:projeto_final/paginas/Produto.dart';
+/*import 'package:flutter/material.dart';
+import 'package:projeto_final/paginas/DetalhesProduto.dart';
 
 class Catalogo extends StatelessWidget {
   const Catalogo({super.key});
@@ -11,11 +11,11 @@ class Catalogo extends StatelessWidget {
       body: ElevatedButton(
         child: const Text('Produto'),
         onPressed: () {
-          Route rota = MaterialPageRoute(builder: (context) => Produto());
+          Route rota = MaterialPageRoute(builder: (context) => DetalhesProduto());
           //Navigator.of(context).push(rota);
           Navigator.push(context, rota);
         },
       ),
     );
   }
-}
+}*/

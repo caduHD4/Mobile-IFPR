@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/paginas/Cadastro.dart';
 import 'package:projeto_final/paginas/Compra.dart';
+import 'package:projeto_final/paginas/DetalhesProduto.dart';
 import 'package:projeto_final/paginas/Home.dart';
 import 'package:projeto_final/paginas/Acesso.dart';
 import 'package:projeto_final/paginas/Introducao.dart';
 import 'package:projeto_final/paginas/Login.dart';
-import 'package:projeto_final/paginas/Catalogo.dart';
 import 'package:projeto_final/paginas/Configu.dart';
 import 'package:projeto_final/paginas/Perfil.dart';
 import 'package:projeto_final/paginas/Sobre.dart';
@@ -16,13 +16,13 @@ import 'package:projeto_final/paginas/listas/endereco_lista.dart';
 import 'package:projeto_final/paginas/listas/endereco_detalhes.dart';
 import 'package:projeto_final/paginas/listas/cliente_lista.dart';
 import 'package:projeto_final/paginas/listas/cliente_form.dart';
-
 import 'package:projeto_final/constants.dart';
 import 'package:projeto_final/paginas/listas/estado_form.dart';
 import 'package:projeto_final/paginas/listas/estado_lista.dart';
 import 'package:projeto_final/paginas/listas/pedido_lista.dart';
 import 'package:projeto_final/paginas/listas/produto_form.dart';
 import 'package:projeto_final/paginas/listas/produto_lista.dart';
+import 'package:projeto_final/paginas/dto/produto.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -77,7 +77,6 @@ class App extends StatelessWidget {
         'endereco_lista': (context) => EnderecoLista(),
         'endereco_form': (context) => EnderecoForm(),
         'endereco_detalhe': (context) => EnderecoDetalhes(),
-        'catalogo': (context) => Catalogo(),
         'compra': (context) => Compra(),
       },
     );
